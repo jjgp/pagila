@@ -35,3 +35,18 @@ select *
 from actor
 order by random()
 limit 5;
+
+-- NULL handling
+select *
+from (select case
+                 when first_name = 'NICK' then 'NICK'
+                 end as first_name
+      from actor) x
+where first_name is not NULL;
+
+select *
+from (select case
+                 when first_name = 'NICK' then 'NICK'
+                 end as first_name
+      from actor) x
+where first_name is NULL;
